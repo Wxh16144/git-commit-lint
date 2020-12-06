@@ -1,0 +1,55 @@
+{
+  "name": "git-commit-lint",
+  "version": "1.0.0",
+  "description": "自定义cz-customizable",
+  "bin": {
+    "my-cm": "./src/index.js",
+    "my-cm-init": "./src/init.js"
+  },
+  "scripts": {
+    "release": "npm publish",
+    "cm": "node src/index.js"
+  },
+  "keywords": [
+    "git",
+    "git-commit",
+    "customizable"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Wxh16144/git-commit-lint"
+  },
+  "author": {
+    "name": "Wuxh",
+    "email": "Wxh1220@gmail.com"
+  },
+  "license": "ISC",
+  "dependencies": {
+    "merge": "^2.1.0",
+    "cz-customizable": "^6.3.0",
+    "commitizen": "^4.2.2"
+  },
+  "devDependencies": {
+    "@commitlint/config-conventional": "^11.0.0",
+    "commitlint": "^11.0.0",
+    "husky": "^4.3.4"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-customizable"
+    },
+    "cz-customizable": {
+      "config": "./rules/cz-config.js"
+    }
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -e $HUSKY_GIT_PARAMS"
+    }
+  },
+  "commitlint": {
+    "extends": [
+      "./rules/lint-config.js"
+    ]
+  }
+}
